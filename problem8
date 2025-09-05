@@ -1,0 +1,40 @@
+# You are conducting a contest at your college. This contest consists of two problems and 
+#  participants. You know the problem that a candidate will solve during the contest.
+
+# You provide a balloon to a participant after he or she solves a problem. There are only green and purple-colored balloons available in a market. Each problem must have a balloon associated with it as a prize for solving that specific problem. You can distribute balloons to each participant by performing the following operation:
+
+# Use green-colored balloons for the first problem and purple-colored balloons for the second problem
+# Use purple-colored balloons for the first problem and green-colored balloons for the second problem
+# You are given the cost of each balloon and problems that each participant solve. Your task is to print the minimum price that you have to pay while purchasing balloons.
+
+# Read number of test cases
+t = int(input().strip())
+
+# Check validity of test cases
+if t < 1 or t > 10:
+    print("Number of test cases must be between 1 and 10")
+else:
+    for _ in range(t):
+        # Read balloon costs: green and purple
+        g, p = map(int, input().split())
+        
+        # Number of participants
+        n = int(input().strip())
+        
+        # Counters for problems solved
+        count1, count2 = 0, 0
+        
+        # Read participants' solutions
+        for _ in range(n):
+            x, y = map(int, input().split())
+            count1 += x   # if problem 1 is solved
+            count2 += y   # if problem 2 is solved
+        
+        # Case 1: problem1 → green, problem2 → purple
+        cost1 = count1 * g + count2 * p
+        
+        # Case 2: problem1 → purple, problem2 → green
+        cost2 = count1 * p + count2 * g
+        
+        # Print minimum cost
+        print(min(cost1, cost2))
