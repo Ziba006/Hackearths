@@ -1,0 +1,17 @@
+# Problem
+# You have been given an array A of size N consisting of positive integers. 
+# You need to find and print the product of all the number in this array Modulo 10^9 + 7
+
+
+n = int(input())
+if (n < 1 or n > 1000):
+    pass
+else:
+    a = list(map(int,input().split()))
+
+    result = 1
+    mod = (10**9 +7)
+    for i in a:
+       result = (result * (i % mod)) % mod
+
+    print(result)
